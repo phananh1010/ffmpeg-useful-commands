@@ -4,9 +4,10 @@ Here is the list of frequently used ffmpeg command
 #### Extract a video segment, change resolution, remove audio
 ```
 ffmpeg -ss 00:00:25 -to 00:00:30  -i car1_raw.mp4 -vf "scale=720:-1" -c:v libx264 -c:a copy -an car1.mp4
+```
 
 #### Spatially crop video
-```
+
 ffmpeg -i input_320x240.avi -vf crop=<w>:<h>:<x>:<y> output_300x220.avi
 ```
 This command is useful to create video tiles. For more detail, see `create-tiles.sh` script
