@@ -7,12 +7,11 @@ ffmpeg -ss 00:00:25 -to 00:00:30  -i car1_raw.mp4 -vf "scale=720:-1" -c:v libx26
 ```
 
 #### Spatially crop video
-
+```
 ffmpeg -i input_320x240.avi -vf crop=<w>:<h>:<x>:<y> output_300x220.avi
 ```
 This command is useful to create video tiles. For more detail, see `create-tiles.sh` script
 
-```
 #### Change video bitrate and resolution
 ```
 ffmpeg -i ./bicycle.mp4 -vf "scale=120:-1" -b:v 64k bicycle_b64k_120x.mp4
