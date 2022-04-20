@@ -2,5 +2,5 @@
 
 #segment, spatial crop, scale, change bitrate, all at the same time
 ```
-ffmpeg -i ./data/paris.mp4  -ss 00:00:10 -t 00:00:01  -vf "crop=1920:1920:0:192,scale=384:384" -b:v 10000k  ./data/paris_motiv.mp4
+ffmpeg -i ./data/paris.mp4  -ss 00:00:10 -t 00:00:01  -vf "crop=1920:1920:760:0 , scale=384:384" -b:v 10000k  ./data/motivation/paris.mp4
 ```
