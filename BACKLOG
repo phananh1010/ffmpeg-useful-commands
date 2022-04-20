@@ -1,6 +1,11 @@
 #### Backlog ffmpeg commands
 
-#segment, spatial crop, scale, change bitrate, all at the same time
+##### segment, spatial crop, scale, change bitrate, all at the same time
 ```
 ffmpeg -i ./data/paris.mp4  -ss 00:00:10 -t 00:00:01  -vf "crop=1920:1920:760:0 , scale=384:384" -b:v 10000k  ./data/motivation/paris.mp4
+```
+
+##### extract images from videos
+```
+ffmpeg -ss 00:00:00.34 -i ./data/motivation/paris_48xmrg_192exp.mp4 -frames:v 1 -q:v 2 ./data/motivation/paris_48x_192exp.png
 ```
