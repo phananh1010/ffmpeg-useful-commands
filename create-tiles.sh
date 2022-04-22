@@ -28,14 +28,14 @@ for segi in {10..11}
 #segis=$(`printf "%02d" 03`)
 do
     #echo "yes | ffmpeg -ss 00:00:$segi -t 00:00:01  -i $FP -c:v libx264 -c:a copy -an $dir_path/seg${segi}.mp4"
-    yes | ffmpeg -ss 00:00:$segi -t 00:00:01  -i $FP -c:v libx264 -c:a copy -an $dir_path/seg${segi}.mp4
+    yes | ffmpeg -ss 00:00:$segi -t 00:00:01  -i $FP -b:v 64k -c:v libx264 -c:a copy -an $dir_path/seg${segi}.mp4
     echo "creating tiles..."
     for hi in {0..3840..384}
     do
         for wi in {0..1920..384}
         do
             #echo "yes | ffmpeg -i $dir_path/seg${segi}.mp4 -vf crop=384:384:${wi}:${hi} $dir_path/seg-${segi}-tile-${wi}-${hi}.mp4 || true"
-            yes | ffmpeg -i $dir_path/seg${segi}.mp4 -vf crop=384:384:${wi}:${hi} $dir_path/seg-${segi}-tile-${wi}-${hi}.mp4 || true
+            yes | ffmpeg -i $dir_path/seg${segi}.mp4 -vf crop=384:384:${wi}:${hi} -b:v 64k $dir_path/seg-${segi}-tile-${wi}-${hi}.mp4 || true
         done
     done
 done
