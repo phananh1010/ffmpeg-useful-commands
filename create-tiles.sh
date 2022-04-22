@@ -9,16 +9,19 @@
 
 #OUTPUT: a directory will be created at ./data/input_video/. Video segments and video tiles will be genrated and put into this directory
 
-
+if [[ $# -eq 0 ]] ; then
+    echo 'must have one argument points to input video'
+    exit 0
+fi
 
 
 FP=${1}
-base_name=$(basename ${FP})
+#base_name=$(basename ${FP})
 #inputvid_path="$(dirname "${VAR}")" 
 inputvid_name=$(echo "$FP" | sed -r "s/.+\/(.+)\..+/\1/")
 echo "Processing file: ${FP}" 
 echo "creating directory named: ${inputvid_name}"
-dir_path=./data/${inputvid_name}
+dir_path=./data/original/${inputvid_name}
 mkdir $dir_path || true #create directory containting tiles
 echo "dir created, new data will be put into: ${dir_path}"
 echo "remove previous files in ${dir_path}"
