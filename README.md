@@ -1,9 +1,9 @@
 # ffmpeg-useful-commands
 Here is the list of frequently used ffmpeg command
 
-#### Extract a video segment, change resolution, remove audio
+#### Extract a video segment (from 00:00s to 1:00s, change resolution, change framerate, remove audio, specify encoder)
 ```
-ffmpeg -ss 00:00:25 -to 00:00:30  -i car1_raw.mp4 -vf "scale=720:-1" -c:v libx264 -c:a copy -an car1.mp4
+ffmpeg -ss 00:00:00 -to 00:01:00  -i ./raw/paris.mp4 -vf "scale=3840:1920 , fps=fps=27" -c:v libx264 -c:a copy -an ./paris.mp4
 ```
 
 #### Spatially crop video
