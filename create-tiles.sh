@@ -30,9 +30,9 @@ do
     echo "yes | ffmpeg -ss 00:00:$segi -t 00:00:01  -i $FP -b:v 100000k -c:v libx264 -c:a copy -an $dir_path/seg${segi}.mp4"
     yes | ffmpeg -ss 00:00:$segi -t 00:00:01  -i $FP -b:v 100000k -c:v libx264 -c:a copy -an $dir_path/seg${segi}.mp4
     echo "creating tiles..."
-    for hi in {0..3840..384}
+    for hi in {0..1919..384}
     do
-        for wi in {0..1920..384}
+        for wi in {0..3839..384}
         do
             echo "yes | ffmpeg -i $dir_path/seg${segi}.mp4 -vf crop=384:384:${wi}:${hi} -b:v 100000k -b:v 64k $dir_path/seg-${segi}-tile-${wi}-${hi}.mp4 || true"
             yes | ffmpeg -i $dir_path/seg${segi}.mp4 -vf crop=384:384:${wi}:${hi} -b:v 100000k -b:v 64k $dir_path/seg-${segi}-tile-${wi}-${hi}.mp4 || true
