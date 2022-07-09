@@ -1,0 +1,17 @@
+### This is a guide to download embedded video from any website
+
+#### Tools:
+a) ffmpeg
+b) chrome web browser
+
+#### Step 1: open the website containing video, use the Elements tab to identify the link to the source cloud server, Note the iframe tab
+
+#### Step 2: open dev windows, go to source tab, deactivate breakpoints (top right corner) in case website enable this feature by default, reload the page
+             
+#### Step 3: play the video, go to network tab, look for video name (in .web, .mp4 extension). In case the video is cut into chunks, check the Fetch/XHR sub tab, you should see a bunch of requests, each for a video segment
+
+#### Step 4: wait for the video to finish playing, export all the request to Json, so that we can parse the link locally. Click the Download button (arrow down)
+
+#### Step 5: run the parsehar.py. Note: you must add meta data to the metadict variables. This includes: file name of the .har file, and filetoken is the video name (you should find it in the Fetch/XHR url)
+
+#### Step 5: run the last line (commented) in a terminal. This is the ffmpeg command to join all the video chunks you just downloaded using the parsehar.py
