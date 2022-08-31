@@ -21,3 +21,10 @@ ffmpeg -i ./bicycle.mp4 -vf "scale=120:-1" -b:v 64k bicycle_b64k_120x.mp4
 ```
 ffmpeg -ss 00:00:02.34 -i ../bicycle.mp4 -frames:v 1 -q:v 2 ./bicycle_b1248k_480x/frame_0002.34.jpg
 ```
+
+
+#### Go through all videos in current folder, and output file name & bitrate:
+```
+for file in *.mp4; do echo -n $file; ffprobe -v quiet -select_streams v:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=
+1 $file; done;
+```
