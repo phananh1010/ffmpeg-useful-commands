@@ -23,8 +23,11 @@ ffmpeg -ss 00:00:02.34 -i ../bicycle.mp4 -frames:v 1 -q:v 2 ./bicycle_b1248k_480
 ```
 
 
-#### Go through all videos in current folder, and output file name & bitrate:
+#### Go through all videos in current folder, and output information such as file name & bitrate, or snapshots
 ```
 for file in *.mp4; do echo -n "$file "; ffprobe -v quiet -select_streams v:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nok
 ey=1 $file; done;
+```
+```
+for file in *.mp4; do yes | ffmpeg -ss 00:00:02.34 -i $file -frames:v 1 -q:v 2 ./snapshots/${file}.jpg; done;
 ```
